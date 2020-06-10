@@ -1,0 +1,35 @@
+<% if @review.job %>
+<h1>Please wright your Review for <% @review.job.title %>!</h1>
+else
+<h1>New Review!</h1>
+<% end %>
+
+
+<% if @review.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+ 
+    <ul>
+    <% @review.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+    <%= form_for ([@review.job, @review]) do |f| %>
+
+    <% if !@review.job %>
+    <%= f.label :job %>
+    <%= f.collection_select  :job_id, Job.all, :id, :title %>
+    <% else %>
+        <%= f.hidden_field :job_id %>
+    <% end %>
+    
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    
+
+    <%= f.submit %>
+    <% end %>
+    

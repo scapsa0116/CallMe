@@ -1,0 +1,35 @@
+<h1><%= @job.title %></h1>
+<h2><%= @job.user.username %></h2>
+
+<div><%= @job.description %></div>
+
+
+<p><%= link_to 'See All Reviews', reviews_path(@review) %></p>
+<p><%= link_to 'Add a new Review', new_review_path(@job) %></p>
+
+
+<h3>Revievs</h3>
+
+<%= @job.reviews.each do |p| %>
+<li><strong><%= p.user.username %></strong> <%= link_to p.description, reviews_path(p) %></li>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>
+<h1>Contact Us At:</h1>
+
+<h2> Office Phone Number: <%= @job.phone_number %>
+
+<h2>Email: <%= @job.busness_email %>
+</P>

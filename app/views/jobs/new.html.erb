@@ -1,0 +1,18 @@
+<h1><%= current_user.username %></h1><h3> Fill Up Job Form Information</h3>
+
+<%= form_for(@job) do |f| %>
+<%= f.label :first_name %>
+<%= f.text_field :first_name, placeholder: "First Name" %><br><br>
+<%= f.label :last_name %>
+<%= f.text_field :last_name, placeholder: "Last Name"%><br><br>
+<%= f.label :phone_number %>
+<%= f.number_field :phone_number, placeholder: "Phone Number" %><br><br>
+<%= f.label :busness_email %>
+<%= f.email_field :busness_email, placeholder: "Busness Email" %><br><br>
+<%= f.label :title %>
+<%= f.text_field :title, placeholder: "Title" %><br><br>
+<%= f.label :description %>
+<%= f.text_area :description, placeholder: "Description" %><br><br>
+<%= f.submit "Submit" %>
+<% end %>
+

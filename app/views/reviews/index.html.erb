@@ -1,0 +1,5 @@
+<h3>Revievs</h3>
+
+<%= @job.reviews.each do |p| %>
+<li><strong><%= p.user.username %></strong> <%= link_to p.description, reviews_path(p) %></li>
+<% end %>
