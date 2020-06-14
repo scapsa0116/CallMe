@@ -1,17 +1,18 @@
-<h1><%= current_user.username %></h1><h3> Fill Up Job Form Information</h3>
+<h1>Edit <%= @job.title%>!</h1>
 
-<%= form_for(@job) do |f| %>
+<%= render partial: "layouts/errors", locals: {object: @job} %>
 
-    <%= f.label "Choose a category:" %>
-    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
-  
-  
-     <p>Or create a new category:
-    <%= f.fields_for :category do |c|%>
-      <%= c.text_field :name%>
-    <% end %>
-    </p>
-  
+<%= form_for(@job) do |f|%>
+
+  <%= f.label "Choose a category:" %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+
+  <p>Or create a new category:
+  <%= f.fields_for :category do |c|%>
+    <%= c.text_field :name%>
+  <% end %>
+  </p>
+
 
 <%= f.label :first_name %>
 <%= f.text_field :first_name, placeholder: "First Name" %><br><br>
@@ -27,4 +28,3 @@
 <%= f.text_area :description, placeholder: "Description" %><br><br>
 <%= f.submit "Submit" %>
 <% end %>
-

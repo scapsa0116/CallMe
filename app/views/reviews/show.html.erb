@@ -1,6 +1,10 @@
-<p><%= link_to 'See All Reviews', reviews_path(@review) %></p>
-<p><%= link_to 'Add a new Review', new_review_path(@job) %></p>
+review/show
+<h2><%= @review.description%> - <%= @review.user.username%></h2>
 
+<% if @review.user == current_user %>
+  <%= link_to "Edit Review", edit_review_path(@review)%>
+<% end %>
 
+<h4>Read the service here: <%= link_to @review.job.title, job_path(@review.job_id) %></h4>
 
 

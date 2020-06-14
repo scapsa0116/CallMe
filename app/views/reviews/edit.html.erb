@@ -1,0 +1,15 @@
+<h1>Edit Reviews!</h1>
+
+
+<%= form_for(@review) do |f|%>
+
+  <%= f.label :job %>
+  <%= f.collection_select :job_id, Job.all, :id, :title %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+
+  <%= f.submit %>
+
+<% end %>

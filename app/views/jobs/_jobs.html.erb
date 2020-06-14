@@ -1,0 +1,5 @@
+<ul>
+    <% jobs.each do |p|%>
+      <li><%= link_to p.title, job_path(p) %> - <%= p.first_name%> </li>
+    <% end %>
+</ul>

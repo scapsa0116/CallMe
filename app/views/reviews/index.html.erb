@@ -1,5 +1,20 @@
-<h3>Revievs</h3>
+review/index
 
-<%= @job.reviews.each do |p| %>
-<li><strong><%= p.user.username %></strong> <%= link_to p.description, reviews_path(p) %></li>
+<% if @job %>
+  <h1>Reviews for <%= @job.title%></h1>
+<% else %>
+  <h1>All Reviews</h1>
 <% end %>
+
+
+
+
+<ul>
+<%= @reviews.each do |p| %>
+<li>
+<strong><%= p.user.username %></strong> "<%= p.description %>" about: <strong><%= link_to p.job.title, job_path(p.job_id) %></strong>
+</li>
+<% end %>
+</ul>
+
+
