@@ -23,7 +23,8 @@ class JobsController < ApplicationController
    end
 
     def create
-        @job = current_user.jobs.create(job_params)
+        @job = current_user.jobs.build(job_params)
+        #binding.pry
         if @job.save
         redirect_to jobs_path
         else
@@ -39,7 +40,7 @@ class JobsController < ApplicationController
       end
     
       def update
-         @job = Job.find_by(id: params[:id])
+         @job = Job.find_by_id(id: params[:id])
          redirect_to jobs_path if !@job || @job.user != current_user
         if @job.update(job_params)
           redirect_to job_path(@job)
@@ -55,13 +56,13 @@ class JobsController < ApplicationController
 
     def show 
         
-        @job = Job.find_by_is(params[:id])
+        @job = Job.find_by_id(params[:id])
         redirect_to jobs_path if !@job
     end
 
     private
 
     def job_params
-        params.require(:job).permit(:first_name, :last_name, :phone_number, :busness_email, :title, :description, :category_id, category_attributes: [:name])
+        params.require(:job).permit(:first_name, :last_name, :phone_number, :busness_email, :title, :description, :category_id, :category_attributes)
     end
 end

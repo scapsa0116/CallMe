@@ -1,3 +1,4 @@
+jobs/new
 <h1><%= current_user.username %></h1><h3> Fill Up Job Form Information</h3>
 
 <%= form_for(@job) do |f| %>
@@ -7,7 +8,7 @@
   
   
      <p>Or create a new category:
-    <%= f.fields_for :category do |c|%>
+    <%= f.fields_for :category_attributes do |c|%>
       <%= c.text_field :name%>
     <% end %>
     </p>
